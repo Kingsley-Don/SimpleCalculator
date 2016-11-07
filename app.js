@@ -49,8 +49,8 @@ function showHelp() {
   btns.style.filter = 'blur(10px)';
   result.style.opacity = '0.4';
   btns.style.opacity = '0.4';
-  help[0].style.display = 'block';
-  help[1].style.display = 'block';
+  help[0].style.zIndex = '99';
+  help[1].style.zIndex = '99';
   help[0].style.opacity = '1';
   help[1].style.opacity = '1';
 }
@@ -62,8 +62,8 @@ function hiddenHelp() {
   btns.style.opacity = 'initial';
   help[0].style.opacity = '0';
   help[1].style.opacity = '0';
-  setTimeout("help[0].style.display = 'none';", 300);
-  setTimeout("help[1].style.display = 'none';", 300);
+  setTimeout("help[0].style.zIndex = '-1';", 350);
+  setTimeout("help[1].style.zIndex = '-1';", 350);
 }
 
 function insertNumber(number) {
