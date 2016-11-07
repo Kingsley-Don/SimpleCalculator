@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: default;
+}
+
+.container {
+  position: relative;
+  width: 500px;
+  margin: auto;
+  margin-top: 20px;
+  padding: 30px 15px 20px 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 0 15px 1px #eeeeee;
+}
+
+header {
+  height: 40px;
+  font-size: 40px;
+  line-height: 40px;
+  font-family: 'Savoye W01';
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#help {
+  font-family: PingFang SC, Microsoft YaHei;
+  font-weight: 400;
+  font-size: 20px;
+  float: right;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+  color: #17b0fe;
+}
+
+.result {
+  height: 110px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  font-size: 75px;
+  line-height: 120px;
+  text-align: right;
+  font-family: 'lcdmono2normal';
+  padding-right: 20px;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.divide {
+  border-top: 1px solid #eeeeee;
+  height: 20px;
+}
+
+.btns {
+  width: 475px;
+  height: 475px;
+  display: -webkit-flex;
+  display:    -moz-flex;
+  display:     -ms-flex;
+  display:      -o-flex;
+  display:         flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Futura', 'FuturaLT';
+  transition-property: opacity;
+  transition-duration: 0.3s;
+}
+
+.line {
+  display: -webkit-flex;
+  display:    -moz-flex;
+  display:     -ms-flex;
+  display:      -o-flex;
+  display:         flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 90px;
+  font-size: 30px;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.15s;
+}
+
+.operator {
+  border-color: #fca63f;
+  background-color: #fca63f;
+  color: #ffffff;
+}
+
+.btn:active {
+  opacity: 0.2;
+}
