@@ -54,7 +54,7 @@ header {
   z-index: -1;
   transition-property: opacity;
   transition-duration: 0.3s;
-  transition-delay: 0.1s
+  transition-delay: 0.1s;
   font-family: PingFang SC, Microsoft YaHei;
 }
 
