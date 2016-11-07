@@ -33,7 +33,7 @@ header {
   padding-right: 10px;
 }
 
-#help {
+#helpbtn {
   font-family: PingFang SC, Microsoft YaHei;
   font-weight: 400;
   font-size: 20px;
@@ -48,6 +48,30 @@ header {
   color: #17b0fe;
 }
 
+.help {
+  position: absolute;
+  opacity: 0;
+  display: none;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  font-family: PingFang SC, Microsoft YaHei;
+}
+
+#help1 {
+  top: 130px;
+  left: 25px;
+  font-size: 25px;
+}
+
+#help2 {
+  top: 260px;
+  left: 25px;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+
+
 .result {
   height: 110px;
   background-color: #f9f9f9;
@@ -58,7 +82,7 @@ header {
   text-align: right;
   font-family: 'lcdmono2normal';
   padding-right: 20px;
-  transition-property: opacity;
+  transition-property: filter, opacity;
   transition-duration: 0.3s;
 }
 
@@ -78,7 +102,7 @@ header {
   flex-direction: column;
   justify-content: space-around;
   font-family: 'Futura', 'FuturaLT';
-  transition-property: opacity;
+  transition-property: filter, opacity;
   transition-duration: 0.3s;
 }
 

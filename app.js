@@ -1,7 +1,9 @@
-var result = document.getElementsByClassName('result')[0],
-    btns   = document.getElementsByClassName('btns')[0],
-    btn    = document.getElementsByClassName('btn'),
-    help   = document.getElementById('help'),
+var result  = document.getElementsByClassName('result')[0],
+    btns    = document.getElementsByClassName('btns')[0],
+    btn     = document.getElementsByClassName('btn'),
+    btnhelp = document.getElementById('helpbtn'),
+    body    = document.getElementsByClassName('container')[0],
+    help    = document.getElementsByClassName('help'),
 
     btn7        = btn[0],
     btn8        = btn[1],
@@ -43,13 +45,25 @@ function fullInitialize() {
 }
 
 function showHelp() {
-  result.style.opacity = '0.1';
-  btns.style.opacity = '0.1';
+  result.style.filter = 'blur(10px)';
+  btns.style.filter = 'blur(10px)';
+  result.style.opacity = '0.4';
+  btns.style.opacity = '0.4';
+  help[0].style.display = 'block';
+  help[1].style.display = 'block';
+  help[0].style.opacity = '1';
+  help[1].style.opacity = '1';
 }
 
 function hiddenHelp() {
-  btns.style.opacity = '1';
-  result.style.opacity = '1';
+  result.style.filter = 'initial';
+  btns.style.filter = 'initial';
+  result.style.opacity = 'initial';
+  btns.style.opacity = 'initial';
+  help[0].style.opacity = '0';
+  help[1].style.opacity = '0';
+  setTimeout("help[0].style.display = 'none';", 300);
+  setTimeout("help[1].style.display = 'none';", 300);
 }
 
 function insertNumber(number) {
@@ -153,8 +167,8 @@ function activeBtn() {
   btnSubtract.onclick = function() {compute('substract');};
   btnDivide.onclick   = function() {compute('divide');};
   btnEqual.onclick    = function() {equal();};
-  help.onmouseover    = function() {showHelp();};
-  help.onmouseout     = function() {hiddenHelp();};
+  btnhelp.onmouseover    = function() {showHelp();};
+  btnhelp.onmouseout     = function() {hiddenHelp();};
 }
 
 // document.onkeydown=function(event){
