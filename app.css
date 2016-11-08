@@ -20,7 +20,7 @@
   padding: 30px 15px 20px 15px;
   border-radius: 10px;
   border: 1px solid #cccccc;
-  box-shadow: 0 0 15px 1px #eeeeee;
+  box-shadow: 4px 4px 15px 1px #eeeeee;
 }
 
 header {
@@ -85,6 +85,7 @@ header {
   padding-right: 20px;
   transition-property: filter, opacity;
   transition-duration: 0.3s;
+  box-shadow: inset 3px 3px 10px #ccc;
 }
 
 .divide {
@@ -125,9 +126,7 @@ header {
   text-align: center;
   line-height: 90px;
   font-size: 30px;
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 0.15s;
+  box-shadow: 0 3px #eee;
 }
 
 .operator {
@@ -137,5 +136,6 @@ header {
 }
 
 .btn:active {
-  opacity: 0.2;
+  transform: translate(0, 3px);
+  box-shadow: initial;
 }
