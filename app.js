@@ -1,80 +1,59 @@
-var result  = document.getElementsByClassName('result')[0],
-    btns    = document.getElementsByClassName('btns')[0],
-    btn     = document.getElementsByClassName('btn'),
-    btnhelp = document.getElementById('helpbtn'),
-    body    = document.getElementsByClassName('container')[0],
-    help    = document.getElementsByClassName('help'),
+var result   = document.getElementsByClassName('result')[0],
+    btns     = document.getElementsByClassName('btns')[0],
+    number   = document.getElementsByClassName('number'),
+    symbols  = document.getElementsByClassName('symbol'),
+    btnDot   = document.getElementsByClassName('dot')[0],
+    help     = document.getElementsByClassName('help'),
+    btnhelp  = document.getElementById('helpbtn'),
 
-    btn7        = btn[0],
-    btn8        = btn[1],
-    btn9        = btn[2],
-    btnDivide   = btn[3],
-    btn4        = btn[4],
-    btn5        = btn[5],
-    btn6        = btn[6],
-    btnMultiply = btn[7],
-    btn1        = btn[8],
-    btn2        = btn[9],
-    btn3        = btn[10],
-    btnSubtract = btn[11],
-    btn0        = btn[12],
-    btnDot      = btn[13],
-    btnEqual    = btn[14],
-    btnAdd      = btn[15],
+    checkResult = true,
+    checkSymbol = true,
+    checkEqual  = true,
+    
+    btnAdd   = symbols[4],
+    btnSub   = symbols[2],
+    btnMul   = symbols[1],
+    btnDiv   = symbols[0],
+    btnEqual = symbols[3],
 
-    numbers = new Array(btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9),
-
-    a = result.innerHTML,b, c,
-
-    checkResult = true;
+    a;
 
 function initialize() {
+  a = '';
+  checkResult = true,
+  checkSymbol = true,
+  checkEqual  = true,
   result.innerHTML = '0';
-}
-
-function innerInitialize() {
-  a = b = 0;
-  checkResult = true;
-  btnEqual.onclick = function() {}
-}
-
-function fullInitialize() {
-  result.innerHTML = '0';
-  a = b = c = 0;
-  checkResult = true;
 }
 
 function showHelp() {
-  result.style.filter = 'blur(10px)';
-  btns.style.filter = 'blur(10px)';
-  result.style.opacity = '0.4';
-  btns.style.opacity = '0.4';
-  help[0].style.zIndex = '99';
-  help[1].style.zIndex = '99';
+  result.style.filter   = 'blur(10px) opacity(0.3) grayscale(0.3)';
+  btns.style.filter     = 'blur(10px) opacity(0.3) grayscale(0.3)';
   help[0].style.opacity = '1';
   help[1].style.opacity = '1';
 }
 
 function hiddenHelp() {
-  result.style.filter = 'initial';
-  btns.style.filter = 'initial';
-  result.style.opacity = 'initial';
-  btns.style.opacity = 'initial';
+  result.style.filter   = 'initial';
+  btns.style.filter     = 'initial';
   help[0].style.opacity = '0';
   help[1].style.opacity = '0';
-  setTimeout("help[0].style.zIndex = '-1';", 350);
-  setTimeout("help[1].style.zIndex = '-1';", 350);
 }
 
 function insertNumber(number) {
+  if (!checkEqual) {
+    a = '';
+  }
+  checkSymbol = true;
   if (result.innerHTML == '0' || checkResult) {
     result.innerHTML = '';
+  } 
+  if (result.innerHTML.length < 11) {
     result.insertAdjacentHTML('beforeend', number);
-    checkResult = false;
-  } else if (result.innerHTML.length < 11) {
-    result.insertAdjacentHTML('beforeend', number);
-    checkResult = false;
   }
+  a += number;
+  checkResult = false;
+  checkEqual = true;
 }
 
 function checkDot(obj, max) {
@@ -88,96 +67,91 @@ function checkDot(obj, max) {
 }
 
 function insertDot() {
-  if (checkResult) {
-    initialize();
+  if (!checkEqual) {
+    a = '';
+  }
+  if (checkResult || !checkSymbol) {
+    result.innerHTML = '0';
+    a += '.';
     result.insertAdjacentHTML('beforeend', '.');
   } else if (checkDot(result.innerHTML, 9)) {
+    a += '.';
     result.insertAdjacentHTML('beforeend', '.');
   }
   checkResult = false;
 }
 
-function compute(symbol) {
-  a = result.innerHTML;
-  switch (symbol) {
-    case 'add':
-      btnEqual.onclick = function() {equal('add');}
-      break;
-    case 'substract':
-      btnEqual.onclick = function() {equal('substract');}
-      break;
-    case 'multiply':
-      btnEqual.onclick = function() {equal('multiply');}
-      break;
-    case 'divide':
-      btnEqual.onclick = function() {equal('divide');}
-      break;
-  }
-  checkResult = true;
-}
-
-function equal(symbol) {
-  b = result.innerHTML;
-  c = Number(result.innerHTML);
-  switch (symbol) {
-    case 'add':
-      c =  Number(a) + Number(b);
-      break;
-    case 'substract':
-      c =  Number(a) - Number(b);
-      break;
-    case 'multiply':
-      c =  Number(a) * Number(b);
-      break;
-    case 'divide':
-      c =  Number(a) / Number(b);
-      break;
-  }
+function writeResult() {
   result.innerHTML = '';
-  if (symbol == 'divide' && b == 0) {
+  if (a == 'Infinity') {
     result.innerHTML = 'MATH ERROR';
-  } else if (String(c).length > 11) {
-    if (Number(c) > 99999999999) {
+  } else if (String(a).length > 11) {
+    if (Number(a) > 99999999999) {
       result.innerHTML = 'MAX LENGTH';
-    } else if (String(c)[10] == '.') {
+    } else if (String(a)[10] == '.') {
       for (var i = 0; i < 10; i++) {
-        result.insertAdjacentHTML('beforeend', String(c)[i]);
+        result.insertAdjacentHTML('beforeend', String(a)[i]);
       }
     } else {
       for (var i = 0; i < 11; i++) {
-        result.insertAdjacentHTML('beforeend', String(c)[i]);
+        result.insertAdjacentHTML('beforeend', String(a)[i]);
       }
     }
   } else {
-    for (var j = 0; j < String(c).length; j++) {
-      result.insertAdjacentHTML('beforeend', String(c)[j]);
+    for (var j = 0; j < String(a).length; j++) {
+      result.insertAdjacentHTML('beforeend', String(a)[j]);
     }
   }
-  innerInitialize();
+}
+
+function insertSymbol(symbol) {
+  if (checkSymbol) {
+    a = eval(a);
+    writeResult();
+    switch (symbol){
+      case 'add':
+        a += '+';
+        break;
+      case 'sub':
+        a += '-';
+        break;
+      case 'mul':
+        a += '*';
+        break;
+      case 'div':
+        a += '/';
+        break;
+    }
+    checkSymbol = false;
+    checkResult = true;
+    checkEqual = true;
+  }
+}
+
+function equal() {
+  if (checkEqual) {
+    a = eval(a);
+    writeResult();
+    checkSymbol = true;
+    checkResult = true;
+  }
+  checkEqual = false;
 }
 
 function activeBtn() {
-  for (i in numbers) {
-    eval("numbers[i].onclick = function () {insertNumber("+i+");}"); 
+  for (i in number) {
+    number[i].onclick = function() {insertNumber(this.innerHTML);};
   }
-  btnDot.onclick      = function() {insertDot();};
-  result.onclick      = function() {fullInitialize();};
-  btnAdd.onclick      = function() {compute('add');};
-  btnMultiply.onclick = function() {compute('multiply');};
-  btnSubtract.onclick = function() {compute('substract');};
-  btnDivide.onclick   = function() {compute('divide');};
-  btnEqual.onclick    = function() {equal();};
-  btnhelp.onmouseover    = function() {showHelp();};
-  btnhelp.onmouseout     = function() {hiddenHelp();};
+  result.onclick         = function() {initialize();}
+  btnAdd.onclick         = function() {insertSymbol('add');}
+  btnSub.onclick         = function() {insertSymbol('sub');}
+  btnMul.onclick         = function() {insertSymbol('mul');}
+  btnDiv.onclick         = function() {insertSymbol('div');}
+  btnDot.onclick         = function() {insertDot();}
+  btnEqual.onclick       = function() {equal();}
+  btnhelp.onmouseover    = function() {showHelp();}
+  btnhelp.onmouseout     = function() {hiddenHelp();}
 }
 
-// document.onkeydown=function(event){
-//      e = event window.event arguments.callee.caller.arguments[0];
-//   if(e && e.keyCode == 27){ 
-//  
-//   }
-// };
-
-setTimeout("fullInitialize()", 1000);
-
+setTimeout('initialize();', 1000);
 activeBtn();

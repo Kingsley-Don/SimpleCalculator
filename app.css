@@ -51,11 +51,10 @@ header {
 .help {
   position: absolute;
   opacity: 0;
-  z-index: -1;
   transition-property: opacity;
-  transition-duration: 0.3s;
-  transition-delay: 0.1s;
+  transition-duration: 0.35s;
   font-family: PingFang SC, Microsoft YaHei;
+  pointer-events: none;
 }
 
 #help1 {
@@ -83,8 +82,8 @@ header {
   text-align: right;
   font-family: 'lcdmono2normal';
   padding-right: 20px;
-  transition-property: filter, opacity;
-  transition-duration: 0.3s;
+  transition-property: filter;
+  transition-duration: 0.35s;
   box-shadow: inset 3px 3px 10px #ccc;
 }
 
@@ -104,8 +103,8 @@ header {
   flex-direction: column;
   justify-content: space-around;
   font-family: 'Futura', 'FuturaLT';
-  transition-property: filter, opacity;
-  transition-duration: 0.3s;
+  transition-property: filter;
+  transition-duration: 0.35s;
 }
 
 .line {
@@ -129,7 +128,7 @@ header {
   box-shadow: 0 3px #eee;
 }
 
-.operator {
+.symbol {
   border-color: #fca63f;
   background-color: #fca63f;
   color: #ffffff;
