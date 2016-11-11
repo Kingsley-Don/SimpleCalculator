@@ -79,12 +79,17 @@ function insertDot() {
     result.insertAdjacentHTML('beforeend', '.');
   }
   checkResult = false;
+  checkEqual  = true;
 }
 
 function writeResult() {
   result.innerHTML = '';
   if (a == 'Infinity') {
     result.innerHTML = 'MATH ERROR';
+  } else if (String(a)[String(a).length - 1] == '.'){
+    for (var i = 0; i < String(a).length - 1; i++) {
+      result.insertAdjacentHTML('beforeend', String(a)[i]);
+    }
   } else if (String(a).length > 11) {
     if (Number(a) > 99999999999) {
       result.innerHTML = 'MAX LENGTH';
