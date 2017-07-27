@@ -1,11 +1,11 @@
-#JavaScript实现简易计算器
+# JavaScript实现简易计算器
 >黄哈哈的第4个作业
 
 访问[这里](https://kingsley-don.github.io/Web-dev-calculator/)可查看预览
 
-啥都没用~纯手写原生JavaScript
+原生 JavaScript
 
-最近改造了下工作台，买了个raindesign mStand，然后把老早买的U2515H竖了起来
+最近改造了下工作台，买了个 raindesign mStand，然后把老早买的U2515H竖了起来
 
 一次看130行代码太爽了！
 
