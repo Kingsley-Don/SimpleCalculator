@@ -1,7 +1,7 @@
 # JavaScript实现简易计算器
 >黄哈哈的第4个作业
 
-访问[这里](https://kingsley-don.github.io/Web-dev-calculator/)可查看预览
+访问[这里](https://kingsley-don.github.io/SimpleCalculator/)可查看预览
 
 原生 JavaScript
 
